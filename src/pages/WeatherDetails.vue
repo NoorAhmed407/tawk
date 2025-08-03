@@ -16,7 +16,6 @@ const isFavorite = ref(false);
 
 
 const handleBack = () => {
-    console.log('Back button clicked', store.state.cityData.index);
     router.back();
 }
 
@@ -50,6 +49,7 @@ const addToFavorite = () => {
       savedCities.push({ lat, lon });
       localStorage.setItem('savedCities', JSON.stringify(savedCities));
       alert('City added to favorites!');
+      handleBack();
     }
 }
 
@@ -58,6 +58,7 @@ const deleteFromFavorite = () => {
     savedCities = savedCities.filter(city => !(city.lat === lat && city.lon === lon));
     localStorage.setItem('savedCities', JSON.stringify(savedCities));
     alert('City removed from favorites!');
+    handleBack();
 }
 
 const checkIfFavorite = () => {
