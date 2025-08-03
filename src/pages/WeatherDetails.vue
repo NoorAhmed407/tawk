@@ -8,7 +8,7 @@ import { onMounted, ref } from 'vue';
 
 const lat = store.state.cityData?.lat;
 const lon = store.state.cityData?.lon;
-const index = store.state.cityData?.index || 1;
+const index = store.state.cityData?.index ?? 1;
 
 const cityData = ref(null)
 const lastUpdateTime = ref(new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
@@ -16,6 +16,7 @@ const isFavorite = ref(false);
 
 
 const handleBack = () => {
+    console.log('Back button clicked', store.state.cityData.index);
     router.back();
 }
 
